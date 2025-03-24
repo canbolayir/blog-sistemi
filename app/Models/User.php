@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -60,5 +61,21 @@ class User extends Authenticatable
     public function pages()
     {
         return $this->hasMany(Page::class);
+    }
+
+    /**
+     * Kullanıcının admin olup olmadığını kontrol eder
+     */
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+    
+    /**
+     * Kullanıcının editor olup olmadığını kontrol eder
+     */
+    public function isEditor()
+    {
+        return $this->role === 'editor' || $this->role === 'admin';
     }
 }
