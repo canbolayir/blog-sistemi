@@ -45,4 +45,20 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    
+    /**
+     * Kullanıcının yazdığı blog yazıları
+     */
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+    
+    /**
+     * Kullanıcının oluşturduğu sayfalar
+     */
+    public function pages()
+    {
+        return $this->hasMany(Page::class);
+    }
 }
